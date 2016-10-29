@@ -14,7 +14,7 @@ __global__ void sum_reduction(const int size, const float *in_data, float *out_r
 
     float value = (i < size) ? in_data[i] : 0.0;
 
-    for (int i = 16; i > 0; i = i / 2)
+    for (int i = 16; i > 0; i /= 2)
         value += __shfl_down(value, i);
 
     if (tid % 32 == 0)
@@ -27,7 +27,7 @@ __global__ void sum_reduction(const int size, const float *in_data, float *out_r
     if (tid < warps)
     {
         value = temp[tid];
-        for (int i = warps / 2; i > 0; i = i / 2)
+        for (int i = warps / 2; i > 0; i /= 2)
             value += __shfl_down(value, i);
 
         if (tid == 0)
