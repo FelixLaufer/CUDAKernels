@@ -1,2 +1,2 @@
 # CUDAkernels
-Collection of some generic usefull CUDA kernels.
+Collection of some generic CUDA kernels.
