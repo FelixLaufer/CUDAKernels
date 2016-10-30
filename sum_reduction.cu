@@ -2,7 +2,7 @@
 * Efficient sum reduction kernel.
 * Reduces float array *in_data to the sum of its elements and stores result in *out_result.
 * Usage: sum_reduction<<<grid, block>>> (size, data_in_dev, out_result_dev)
-* where block = 1024 (or 512, depending on device) and grid = (size + block - 1).
+* where block = 1024 (or 512, depending on device) and grid = (size + block - 1) / block.
 * Requires computing capability >= 3.0 (Kepler) due to __shfl_down operations.
 **/
 __global__ void sum_reduction(const int size, const float *in_data, float *out_result)
