@@ -8,7 +8,7 @@
 * where block = dim3(TILE_DIM, UNROLL) 
 * and grid = dim3((n + TILE_DIM - 1) / TILE_DIM, (m + TILE_DIM - 1) / TILE_DIM)
 * optimal TILE_DIM and UNROLL are dependent on the device
-* Settings 780 Ti: TILEDIM 32, UNROLL 8
+* Settings 780Ti: TILEDIM 32, UNROLL 8
 * Settings 960M: TILEDIM 16, UNROLL 4 or 8
 **/
 __global__ void matrix_transpose(const float *idata, float *odata, const int m, const int n)
